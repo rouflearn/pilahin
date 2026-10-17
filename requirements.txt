@@ -1,4 +1,4 @@
 streamlit>=1.40
-ultralytics>=8.3
+ultralytics-opencv-headless>=8.3
 pandas>=2.0
 Pillow>=10.0
