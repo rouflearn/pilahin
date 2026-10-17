@@ -1,44 +1,99 @@
 # PILAHIN — Klasifikasi Sampah Berbasis Citra
 
-Aplikasi web Python + Streamlit untuk membantu mengenali sampah dari gambar.
+Aplikasi web berbasis Python dan Streamlit untuk membantu mengenali sampah dari gambar menggunakan model kecerdasan buatan (AI).
 
-## Jalankan secara lokal
+## Fitur Utama
 
-```bash
-python -m venv .venv
-# Windows PowerShell:
-.venv\Scripts\Activate.ps1
-# macOS/Linux:
-# source .venv/bin/activate
+- Unggah dan analisis gambar sampah.
+- Klasifikasi gambar menggunakan model AI.
+- Antarmuka web berbasis Streamlit.
+- Pemrosesan model melalui Python.
 
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-streamlit run app.py
-```
+## Persyaratan
+
+- Python 3.10 atau versi yang kompatibel dengan dependensi aplikasi.
+- pip.
+- Model AI pada `weights/best.pt`.
+
+## Menjalankan Aplikasi Secara Lokal
+
+1. Buat virtual environment:
+
+   ```bash
+   python -m venv .venv
+   ```
+
+2. Aktifkan virtual environment.
+
+   Windows PowerShell:
+
+   ```powershell
+   .venv\Scripts\Activate.ps1
+   ```
+
+   Git Bash:
+
+   ```bash
+   source .venv/Scripts/activate
+   ```
+
+   macOS/Linux:
+
+   ```bash
+   source .venv/bin/activate
+   ```
+
+3. Instal dependensi:
+
+   ```bash
+   python -m pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+4. Jalankan aplikasi:
+
+   ```bash
+   streamlit run app.py
+   ```
 
 ## Deploy ke Streamlit Community Cloud
 
-1. Unggah isi repository ini ke GitHub.
-2. Buka https://share.streamlit.io dan hubungkan akun GitHub.
-3. Pilih **Create app**, repository `pilahin`, branch `main`, file utama `app.py`.
-4. Klik **Deploy**.
+1. Unggah seluruh berkas aplikasi ke repository GitHub.
+2. Buka https://share.streamlit.io.
+3. Hubungkan akun GitHub.
+4. Pilih **Create app**.
+5. Pilih repository `rouflearn/pilahin`.
+6. Pilih branch `main`.
+7. Atur file utama menjadi `app.py`.
+8. Klik **Deploy**.
 
-## Status model dan keterbatasan
+## Struktur Berkas Utama
 
-Paket deploy menyertakan `weights/best.pt` dari proyek sumber agar aplikasi dapat menemukan model pada path yang diharapkan.
-Dataset yang tersedia saat paket dibuat hanya memiliki satu kelas (`plastik`). Karena itu, model ini **belum menjadi model multi-kategori yang tervalidasi** untuk organik, B3, anorganik lain, dan residu. Verifikasi hasil secara manual dan jangan menjadikan hasil model sebagai satu-satunya dasar penanganan limbah berbahaya.
+- `app.py`: antarmuka utama Streamlit.
+- `classifier.py`: pemuatan model dan proses inferensi.
+- `config.py`: konfigurasi kategori dan pemetaan.
+- `algorithms.py`: fungsi pengurutan dan rekapitulasi.
+- `ui.py`: komponen antarmuka.
+- `weights/best.pt`: bobot model AI.
+- `requirements.txt`: daftar dependensi Python.
+- `tests/test_all.py`: pengujian aplikasi.
 
-## Berkas utama
+## Status Model dan Keterbatasan
 
-- `app.py`: antarmuka Streamlit
-- `classifier.py`: pemuatan model dan inferensi
-- `config.py`: kategori dan aturan pemetaan
-- `algorithms.py`: pengurutan dan rekap
-- `weights/best.pt`: bobot model yang disertakan
-- `requirements.txt`: dependensi Python
+Paket aplikasi menyertakan model pada `weights/best.pt` agar aplikasi dapat menemukan berkas model pada lokasi yang diharapkan.
 
-## Tes unit
+Dataset yang tersedia saat paket dibuat hanya memiliki satu kelas, yaitu `plastik`. Oleh karena itu, model ini belum tervalidasi untuk mengklasifikasikan berbagai kategori sampah seperti organik, B3, anorganik lainnya, dan residu.
+
+Hasil prediksi perlu diperiksa secara manual. Jangan menjadikan prediksi model sebagai satu-satunya dasar untuk menentukan penanganan limbah berbahaya.
+
+## Menjalankan Tes
+
+Jalankan perintah berikut dari direktori utama repository:
 
 ```bash
 python tests/test_all.py
 ```
+
+## Lisensi dan Pengembangan
+
+Silakan tambahkan informasi lisensi dan kontribusi sesuai kebijakan pengembangan proyek PILAHIN.
