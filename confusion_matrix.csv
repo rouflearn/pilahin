@@ -1,0 +1,6 @@
+benar,botol_plastik,cup_plastik,kantong_plastik,trash,wadah_plastik
+botol_plastik,3,0,0,0,0
+cup_plastik,1,1,0,0,0
+kantong_plastik,0,0,5,0,0
+trash,0,0,0,5,0
+wadah_plastik,3,0,0,0,2
